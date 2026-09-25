@@ -1,0 +1,37 @@
+version: '3.8'
+
+services:
+  postgres:
+    image: postgres:15-alpine
+    container_name: agrosoft_postgres
+    restart: always
+    environment:
+      POSTGRES_USER: backend_user
+      POSTGRES_PASSWORD: backend123
+      POSTGRES_DB: db_agrosoft
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U backend_user"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+volumes:
+  postgres_data:[Nest] 6288  - 25/09/2026, 8:15:37 a. m.   ERROR [TypeOrmModule] Unable to connect to the database. Retrying (1)...
+error: la autentificaci�n password fall� para el usuario �backend_user�
+    at parseErrorMessage (C:\Users\juanf\Music\viernespro\estudiar\activi\backend\node_modules\pg-protocol\src\parser.ts:395:9)
+    at Parser.handlePacket (C:\Users\juanf\Music\viernespro\estudiar\activi\backend\node_modules\pg-protocol\src\parser.ts:212:19)
+    at Parser.parse (C:\Users\juanf\Music\viernespro\estudiar\activi\backend\node_modules\pg-protocol\src\parser.ts:105:30)
+    at Socket.<anonymous> (C:\Users\juanf\Music\viernespro\estudiar\activi\backend\node_modules\pg-protocol\src\index.ts:7:48)
+    at Socket.emit (node:events:508:28)
+    at addChunk (node:internal/streams/readable:559:12)
+    at readableAddChunkPushByteMode (node:internal/streams/readable:510:3)
+    at Readable.push (node:internal/streams/readable:390:5)
+    at TCP.onStreamRead (node:internal/stream_base_commons:189:23)
+[Nest] 6288  - 25/09/2026, 8:15:40 a. m.   ERROR [TypeOrmModule] Unable to connect to the database. Retrying (2)...
+error: la autentificaci�n password fall� para el usuario �backend_user�
+    at parseErrorMessage (C:\Users\juanf\Music\viernespro\estudiar\activi\backend\node_modules\pg-protocol\src\parser.ts:395:9)
+    at Parser.handlePacket (C:\Users\juanf\Music\viernespro\estudiar\activi\backend\node_modules\pg-protocol\src\parser.ts:212:19)
